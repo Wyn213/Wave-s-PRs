@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termoxy</title>
+    <script src="uv/uv.bundle.js" defer></script>
+    <script src="uv/uv.config.js" defer></script>
+    <script src="register-sw.js" defer></script>
+    <script src="search.js" defer></script>
+    <script src="scripts/home.js" defer></script>
+    <style>
+        body {
+            background-color: black;
+            width: 100%;
+            height: 100%;
+            margin: 0; 
+            overflow: hidden;
+        }
+
+        #editor {
+            position: absolute;
+            left: 50vw;
+            transform: translateX(-50%);
+            width: 75vw;
+            height: 50vh;
+            color: white;
+            background-color: black;
+            border: 10px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            resize: none;
+        }
+
+        #address {
+            color: white;
+            position: absolute;
+            left: 50vw;
+            bottom: 35vh;
+            width: 75vw;
+            border: 10px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            background-color: black;
+            transform: translateX(-50%);
+        }
+
+        .iframe{
+            position: absolute;
+            width:100%;
+            height: 100%;
+            left:0px;
+            top:0px;
+            border: none;
+        }
+
+        .payloads {
+            position: absolute;
+            top: 70vh;
+            display: table;
+        }
+
+        .payloads button {
+            padding: 5px 15px;
+            margin-bottom: 15px;
+            margin-left: 15px;
+            background-color: black;
+            color: white;
+            border: 3px solid rgb(27, 27, 27);
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <textarea id="editor">alert(1);</textarea>
+    <form id="form" class="flex-center">
+        <input id="search-engine" value="https://www.google.com/search?q=%s" type="hidden"/>
+        <input id="address" class="inputUrl" type="text" placeholder="Search the web freely" />
+      </form>
+          <div class="payloads" id="payloads">
+        
+    </div>
+</body>
+</html>
