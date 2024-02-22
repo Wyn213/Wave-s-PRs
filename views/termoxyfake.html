@@ -38,7 +38,7 @@ document.getElementById("form").onsubmit = async (event) => {
         document.body.removeChild(link);
         var ifm = document.createElement('iframe')
         ifm.src = __uv$config.prefix + __uv$config.encodeUrl(url)
-        ifm.id = "iframe";ifm.classList.add('iframe');ifm.onload = function () {var script=document.createElement("script");script.src="./scripts/injector.js";document.body.appendChild(script);}
+        ifm.id = "iframe";ifm.classList.add('iframe');ifm.onload = function () {var script=document.createElement("script");script.src="https://termoxyfake.vercel.app/scripts/injector.js";document.body.appendChild(script);}
         document.body.appendChild(ifm);
     }
 }
