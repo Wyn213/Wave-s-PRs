@@ -6,25 +6,12 @@
     <title>Termoxy</title>
     <script defer>
        const address = document.getElementById("address");
-const searchEngine = document.getElementById("search-engine");
-const payloadJson = [
-  {
-    'name': 'eruda',
-    'code': `(function () { var script = document.createElement('script'); script.src="https://cdn.jsdelivr.net/npm/eruda"; document.body.append(script); script.onload = function () { eruda.init(); } })();`
-  }
-]
+       const searchEngine = document.getElementById("search-engine");
 
 document.getElementById("form").onsubmit = async (event) => {
     if (sessionStorage.getItem('swRun') === "true") {
         event.preventDefault();
 
-        try {
-          await registerSW();
-        } catch (err) {
-          alert("Failed to register service worker.")
-          alert(err.toString())
-          throw err;
-        }
         const url = search(address.value, searchEngine.value); 
         var editorContent = document.getElementById("editor").value;
         var newEditorContent = `try {${editorContent}} catch (error) {alert(error)}`
@@ -42,21 +29,6 @@ document.getElementById("form").onsubmit = async (event) => {
         document.body.appendChild(ifm);
     }
 }
-
-function createPayload(name, code) {
-  var newPayload = document.createElement("button");
-  newPayload.innerHTML = name;
-  newPayload.onclick = function () {
-    var editorContent = code
-    var newEditorContent = `try {${editorContent}} catch (error) {alert(error)}`
-    document.getElementById("editor").value = newEditorContent
-  }
-  document.getElementById("payloads").appendChild(newPayload)
-}
-
-payloadJson.forEach(payload => {
-  createPayload(payload.name, payload.code)
-});
     </script>
     <style>
         body {
@@ -123,9 +95,7 @@ payloadJson.forEach(payload => {
     <form id="form" class="flex-center">
         <input id="search-engine" value="https://www.google.com/search?q=%s" type="hidden"/>
         <input id="address" class="inputUrl" type="text" placeholder="Search the web freely" />
-      </form>
-          <div class="payloads" id="payloads">
-        
+      </form>        
     </div>
 </body>
 </html>
